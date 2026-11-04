@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Бриошь — пекарня и пицца в Астане</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#fff6ea">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Rubik:wght@500;700&family=Onest:wght@400;500;600&display=swap">
+<style>
+/* Layout: warm bakery paper with the orange of their logo; scalloped dividers echo their menu cards; order-to-WhatsApp picker is the interactive moment */
+:root{
+  --paper:#fff6ea; --paper-2:#fbe9d3; --ink:#4a2a18; --muted:#86644f; --orange:#e3611c; --orange-2:#c84f10; --line:#efd9bf;
+  --script:"Pacifico",cursive; --display:"Rubik",system-ui,sans-serif; --text:"Onest",system-ui,sans-serif;
+  --ease:cubic-bezier(0.23,1,0.32,1);
+}
+*{box-sizing:border-box}
+html{touch-action:manipulation;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--text);-webkit-tap-highlight-color:transparent;padding-bottom:96px}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:24px}
+
+.demo{background:var(--ink);color:var(--paper);font-size:13px;text-align:center;padding:7px 16px}
+
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px}
+.brand{text-decoration:none;font:400 30px/1 var(--script);color:var(--orange)}
+.brand small{display:block;font:600 10px var(--text);letter-spacing:.28em;color:var(--ink);margin-top:2px}
+nav{display:flex;gap:26px;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 15px var(--text);text-decoration:none;padding:13px 24px;border-radius:999px;border:1.5px solid var(--orange);cursor:pointer;transition:transform 160ms var(--ease),background-color 160ms ease,color 160ms ease}
+.btn:active{transform:scale(.97)}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-orange:hover{background:var(--orange-2);border-color:var(--orange-2)}
+.btn-line{background:transparent;color:var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+
+/* scalloped edge */
+.scallop{height:22px;background:radial-gradient(circle at 12px 0,transparent 11px,var(--paper-2) 12px) 0 0/24px 22px repeat-x}
+.scallop.down{background:radial-gradient(circle at 12px 22px,transparent 11px,var(--paper-2) 12px) 0 0/24px 22px repeat-x}
+
+.hero{padding-block:48px 64px}
+.kz{font:500 15px var(--text);color:var(--orange);margin:0 0 14px}
+.hero h1{font:700 clamp(40px,7vw,84px)/1 var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.hero h1 span{display:block;font:400 clamp(30px,5vw,58px)/1.3 var(--script);color:var(--orange);letter-spacing:0;margin-top:6px}
+.hero p{max-width:42ch;color:var(--muted);margin:20px 0 30px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 30px;margin-top:32px;font-size:15px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:600}
+
+.fresh{background:var(--paper-2)}
+.fresh .wrap{padding-block:48px}
+.fresh h2{margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.chip{background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:9px 18px;font-weight:500}
+.set{margin-top:28px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+.set b{font:700 24px var(--display);color:var(--orange-2)}
+
+section{padding-block:72px}
+h2{font:700 clamp(32px,4.4vw,48px)/1.1 var(--display);margin:0 0 12px}
+.sub{color:var(--muted);margin:0 0 30px;max-width:56ch}
+
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:26px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;background:transparent;border:1.5px solid var(--line);color:var(--muted);font:500 15px var(--text);padding:9px 16px;border-radius:999px;cursor:pointer;transition:background-color 160ms ease,color 160ms ease,border-color 160ms ease}
+.tab:hover{color:var(--ink);border-color:var(--orange)}
+.tab[aria-selected="true"]{background:var(--orange);border-color:var(--orange);color:#fff}
+
+.items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;max-width:900px}
+.it{display:flex;align-items:center;gap:14px;padding-block:13px;border-bottom:1px dashed var(--line);cursor:pointer}
+.it input{appearance:none;flex:none;width:22px;height:22px;border:1.5px solid var(--orange);border-radius:6px;margin:0;display:grid;place-items:center;cursor:pointer}
+.it input:checked{background:var(--orange)}
+.it input:checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.it span{flex:1;min-width:0}
+.it span small{display:block;color:var(--muted);font-size:14px}
+.it b{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+.visit .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-bottom:32px}
+.visit h3{font:700 14px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:0 0 8px}
+.visit p{margin:0}
+
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:10;background:var(--ink);color:var(--paper);padding:12px 0 calc(12px + env(safe-area-inset-bottom,0px));transform:translateY(110%);transition:transform 260ms var(--ease)}
+.bar.on{transform:none}
+.bar .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.bar .sum{flex:1;min-width:0;font-size:15px;white-space:nowrap}
+.bar .sum b{font-size:18px;font-variant-numeric:tabular-nums}
+.bar input{flex:1 1 220px;min-width:0;background:#5d3a26;border:1px solid #74503a;color:var(--paper);font:500 15px var(--text);padding:11px 14px;border-radius:999px}
+.bar input::placeholder{color:#d9bfa9}
+@media (prefers-reduced-motion:reduce){.bar,.btn{transition:none}}
+
+@media (max-width:760px){
+  nav{display:none}
+  .items,.visit .grid{grid-template-columns:1fr}
+  section{padding-block:56px}
+  .hero{padding-block:32px 48px}
+  .bar .wrap{gap:10px}
+  .bar .sum,.bar input,.bar .btn{flex:1 1 100%}
+  body{padding-bottom:190px}
+}
+</style></head>
+<body>
+
+<div class="demo">Демо-концепт сайта от Pixel Studio · не официальный сайт пекарни</div>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#">Бриошь<small>НАН &amp; ПИЦЦА ҮЙІ</small></a>
+  <nav><a href="#menu">Меню</a><a href="#visit">Как найти</a></nav>
+  <a class="btn btn-orange" href="https://wa.me/77086164653" target="_blank" rel="noopener">Заказать</a>
+</div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <p class="kz">Күн сайын жаңа піскен өнім</p>
+    <h1>Каждый день свежий хлеб<span>и горячая пицца</span></h1>
+    <p>Пекарня-кофейня на Кенесары, 63. Хлеб, выпечка, киши, пицца, десерты и завтраки весь день. Есть доставка.</p>
+    <div class="cta">
+      <a class="btn btn-orange" href="#menu">Смотреть меню</a>
+      <a class="btn btn-line" href="https://wa.me/77086164653" target="_blank" rel="noopener">Заказать в WhatsApp</a>
+    </div>
+    <div class="facts"><span><b>4,9</b> в 2ГИС</span><span>Ежедневно <b>08:00–23:00</b></span><span>Кенесары, <b>63</b></span></div>
+  </div></section>
+
+  <div class="scallop" aria-hidden="true"></div>
+  <div class="fresh"><div class="wrap">
+    <h2>Свежее каждый день</h2>
+    <p class="sub" style="margin:0">Ассортимент выпечки меняется каждый день. Что есть сегодня и сколько стоит, спросите в WhatsApp.</p>
+    <div class="chips"><span class="chip">Хлеб на закваске и с семенами</span><span class="chip">Сладкая выпечка</span><span class="chip">Киши</span><span class="chip">Пицца</span><span class="chip">Десерты</span><span class="chip">Сеты для праздников</span></div>
+    <div class="set"><b>от 38 500 ₸</b><span>сет «Briosh Special» на 30 персон для праздников и офиса</span></div>
+  </div></div>
+  <div class="scallop down" aria-hidden="true"></div>
+
+  <section id="menu"><div class="wrap">
+    <h2>Меню</h2>
+    <p class="sub">Отметьте, что хотите заказать, и нажмите «Заказать». Откроется WhatsApp пекарни с готовым сообщением. Размер напитка уточните в переписке.</p>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="items" id="items"></div>
+  </div></section>
+
+  <section class="visit" id="visit" style="background:var(--paper-2)"><div class="wrap">
+    <h2>Как нас найти</h2>
+    <div class="grid">
+      <div><h3>Адрес</h3><p>Астана, Байконыр район,<br>Кенесары, 63</p></div>
+      <div><h3>Часы</h3><p>Ежедневно<br>08:00–23:00</p></div>
+      <div><h3>Телефон</h3><p>+7 708 616 46 53</p></div>
+    </div>
+    <div class="cta">
+      <a class="btn btn-orange" href="https://wa.me/77086164653" target="_blank" rel="noopener">Заказать в WhatsApp</a>
+      <a class="btn btn-line" href="https://2gis.kz/astana/firm/70000001103026988" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>Бриошь · нан &amp; пицца үйі · Астана</span>
+  <a href="https://www.instagram.com/briosh.bakery/" target="_blank" rel="noopener">Instagram</a>
+</div></footer>
+
+<div class="bar" id="bar" aria-live="polite"><div class="wrap">
+  <div class="sum" id="sum"></div>
+  <input id="note" placeholder="Доставка или самовывоз, к какому времени…" autocomplete="off" aria-label="Детали заказа">
+  <a class="btn btn-orange" id="order" href="#" target="_blank" rel="noopener">Заказать в WhatsApp</a>
+</div></div>
+
+<script>
+// [name, price, note]; price is a number or "a / b / c" for sizes
+const MENU = [
+  { id: "coffee", title: "Кофе", items: [
+    ["Американо", "750 / 850 / 950", "250 / 350 / 450 мл"], ["Капучино", "990 / 1090 / 1200", "250 / 350 / 450 мл"],
+    ["Латте", "990 / 1090 / 1200", "250 / 350 / 450 мл"], ["Раф", "1290 / 1390", "350 / 450 мл"],
+    ["Эспрессо", "590 / 690", "30 / 60 мл"], ["Флэт уайт", 990, "250 мл"], ["Мокачино", 1190, "350 мл"],
+    ["Какао", 890, "350 мл"], ["Горячий шоколад", 1200, "350 мл"] ] },
+  { id: "tea", title: "Чай", items: [
+    ["Облепиховый", "790 / 1750", "350 / 1000 мл"], ["Имбирь — облепиха", "790 / 1750", "350 / 1000 мл"], ["Марокканский", "790 / 1750", "350 / 1000 мл"],
+    ["Ташкентский", "790 / 1750", "350 / 1000 мл"], ["Ягодный", "790 / 1750", "350 / 1000 мл"], ["Глинтвейн", 1200, "350 мл"],
+    ["Чёрный чай по-казахски", 1350, "1000 мл"], ["Чёрный или зелёный", "200 / 1080", "350 / 1000 мл"], ["Чёрный с лимоном", 300], ["Чёрный с молоком", 400] ] },
+  { id: "breakfast", title: "Завтраки", items: [
+    ["Английский завтрак", 2700], ["Омлет с сыром, помидорами и колбасками", 2700], ["Омлет с куриной грудкой", 2700],
+    ["Омлет с копчёной говядиной и сулугуни", 2700], ["Тостовый омлет с ветчиной и сыром", 2700], ["Шакшука", 2700], ["Яичница-глазунья", 1500],
+    ["Каша овсяная", 1200], ["Каша рисовая с бананом", 1200], ["Каша пшённая с курагой и орехом", 1200] ] },
+  { id: "lunch", title: "Обеды и салаты", items: [
+    ["Манты", 2000], ["Оливье", 650], ["Винегрет", 600], ["Морковный салат", 550], ["Салат из красной капусты", 550] ] },
+  { id: "cold", title: "Холодные напитки", items: [
+    ["Айс американо", 1190, "0,5 л"], ["Айс латте", 1190, "0,5 л"], ["Айс капучино", 1190, "0,5 л"], ["Бамбл кофе", 1300, "0,5 л"],
+    ["Фраппучино", 1850, "0,5 л"], ["Матча латте", 1190, "0,5 л"], ["Коктейль клубничный", 1800, "0,4 л"], ["Коктейль молочный", 1800, "0,4 л"], ["Коктейль шоколадный", 1800, "0,4 л"] ] },
+  { id: "lemonade", title: "Лимонады", items: [
+    ["Мохито", "1150 / 2200", "0,5 / 1 л"], ["Цитрус, манго, маракуйя", "1150 / 2200", "0,5 / 1 л"], ["Ягодный лимонад", "1150 / 2200", "0,5 / 1 л"],
+    ["Киви — лайм", "1150 / 2200", "0,5 / 1 л"], ["Манго — апельсин", "1150 / 2200", "0,5 / 1 л"], ["Клубника — мохито", "1150 / 2200", "0,5 / 1 л"], ["Гранат — малина", "1150 / 2200", "0,5 / 1 л"],
+    ["Мороженое", 500, "30 г"] ] },
+];
+
+const WA = "77086164653";
+const fmt = new Intl.NumberFormat("ru-RU");
+const picked = new Map();
+const tabs = document.getElementById("tabs"), box = document.getElementById("items");
+const bar = document.getElementById("bar"), sum = document.getElementById("sum"), order = document.getElementById("order"), note = document.getElementById("note");
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function show(id) {
+  const cat = MENU.find(c => c.id === id) || MENU[0];
+  tabs.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.id === cat.id));
+  box.innerHTML = cat.items.map(([n, p, s], i) => {
+    const key = cat.id + i;
+    const multi = typeof p === "string";
+    const shown = multi ? p.split(" / ").map(n => fmt.format(+n)).join(" / ") : fmt.format(p);
+    const value = multi ? +p.split(" / ")[0] : p;
+    return `<label class="it"><input type="checkbox" data-key="${key}" data-name="${esc(n)}" data-price="${value}" data-from="${multi ? 1 : 0}" ${picked.has(key) ? "checked" : ""}><span>${esc(n)}${s ? `<small>${esc(s)}</small>` : ""}</span><b>${shown} ₸</b></label>`;
+  }).join("");
+}
+function update() {
+  const list = [...picked.values()];
+  bar.classList.toggle("on", list.length > 0);
+  if (!list.length) return;
+  const total = list.reduce((s, x) => s + x.price, 0);
+  const approx = list.some(x => x.from) ? "от " : "";
+  sum.innerHTML = `Выбрано: ${list.length} · <b>${approx}${fmt.format(total)} ₸</b>`;
+  const text = `Здравствуйте! Хочу заказать в Бриошь:\n${list.map(x => `— ${x.name}${x.from ? "" : ` (${fmt.format(x.price)} ₸)`}`).join("\n")}` + (note.value.trim() ? `\n${note.value.trim()}` : "");
+  order.href = `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
+}
+box.addEventListener("change", e => {
+  const c = e.target; if (!c.dataset.key) return;
+  if (c.checked) picked.set(c.dataset.key, { name: c.dataset.name, price: +c.dataset.price, from: c.dataset.from === "1" }); else picked.delete(c.dataset.key);
+  update();
+});
+note.addEventListener("input", update);
+MENU.forEach(c => {
+  const b = document.createElement("button");
+  b.className = "tab"; b.type = "button"; b.role = "tab"; b.dataset.id = c.id; b.textContent = c.title;
+  b.addEventListener("click", () => show(c.id));
+  tabs.appendChild(b);
+});
+show("coffee");
+</script>
+</body></html>
